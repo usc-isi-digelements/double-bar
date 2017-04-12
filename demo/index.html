@@ -1,0 +1,140 @@
+<!--
+Copyright 2017 Next Century Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../double-bar.html">
+</head>
+
+<body unresolved>
+  <style>
+    double-bar {
+      width: 100%;
+    }
+  </style>
+
+  <template is="dom-bind" id="demo">
+    <p>Text: Double Bar With Checkbox</p>
+    <p>Selected: [[selected]]</p>
+
+    <double-bar show-checkbox
+      text="Double Bar With Checkbox"
+      count="500"
+      max="500"
+      max-other-count="500"
+      other-count="500"
+      selected="{{selected}}">
+    </double-bar>
+
+    <p>Text: Double Bar With Icon</p>
+    <p>Icon: 'icons:polymer'</p>
+
+    <double-bar
+      text="Double Bar With Icon"
+      count="500"
+      max="500"
+      max-other-count="500"
+      other-count="500"
+      icon="icons:polymer">
+    </double-bar>
+
+    <p>Text: Double Bar With Link</p>
+    <p>Link: http://www.nextcentury.com</p>
+
+    <double-bar
+      text="Double Bar With Link"
+      count="500"
+      max="500"
+      max-other-count="500"
+      other-count="500"
+      link="http://www.nextcentury.com">
+    </double-bar>
+
+    <p>Text: One Hundred Percent</p>
+    <p>Count: 500</p>
+    <p>Max: 500</p>
+    <p>Other Count: 500</p>
+    <p>Max Other Count: 500</p>
+
+    <double-bar
+      text="One Hundred Percent"
+      max-other-count="500"
+      other-count="500"
+      count="500"
+      max="500">
+    </double-bar>
+
+    <p>Text: Fifty Percent</p>
+    <p>Count: 250</p>
+    <p>Max: 500</p>
+    <p>Other Count: 250</p>
+    <p>Max Other Count: 500</p>
+
+    <double-bar
+      text="Fifty Percent"
+      max-other-count="500"
+      other-count="250"
+      count="250"
+      max="500">
+    </double-bar>
+
+    <p>Text: Ten Percent</p>
+    <p>Count: 50</p>
+    <p>Max: 500</p>
+    <p>Other Count: 50</p>
+    <p>Max Other Count: 500</p>
+
+    <double-bar
+      text="Ten Percent"
+      max-other-count="500"
+      other-count="50"
+      count="50"
+      max="500">
+    </double-bar>
+
+    <p>Text: One Percent</p>
+    <p>Count: 5</p>
+    <p>Max: 500</p>
+    <p>Other Count: 5</p>
+    <p>Max Other Count: 500</p>
+
+    <double-bar
+      text="One Percent"
+      max-other-count="500"
+      other-count="5"
+      count="5"
+      max="500">
+    </double-bar>
+
+    <p>Text: Zero Percent</p>
+    <p>Count: 0</p>
+    <p>Max: 500</p>
+    <p>Other Count: 0</p>
+    <p>Max Other Count: 500</p>
+
+    <double-bar
+      text="Zero Percent"
+      max-other-count="500"
+      other-count="0"
+      count="0"
+      max="500">
+    </double-bar>
+  </template>
+</body>
+</html>

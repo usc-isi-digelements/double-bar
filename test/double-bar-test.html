@@ -1,0 +1,144 @@
+<!--
+Copyright 2017 Next Century Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!doctype html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../double-bar.html">
+</head>
+
+<body>
+  <test-fixture id="double-bar-fixture">
+    <template>
+      <double-bar></double-bar>
+    </template>
+  </test-fixture>
+
+  <script>
+    /* globals suite, setup, fixture, test, expect, flush */
+    /* jshint -W030 */
+    suite('double-bar tests', function() {
+      var element;
+
+      setup(function(done) {
+        element = fixture('double-bar-fixture');
+        element.count = 2;
+        element.icon = 'myIcon';
+        element.itemId = 'myId';
+        element.link = 'myLink';
+        element.max = 5;
+        element.styleClass = 'myStyleClass';
+        element.text = 'My Item Text';
+        element.queryField = 'myField';
+        flush(done);
+      });
+
+      test('input properties are set correctly', function() {
+        expect(element.count).to.equal(2);
+        expect(element.icon).to.equal('myIcon');
+        expect(element.itemId).to.equal('myId');
+        expect(element.link).to.equal('myLink');
+        expect(element.max).to.equal(5);
+        expect(element.styleClass).to.equal('myStyleClass');
+        expect(element.text).to.equal('My Item Text');
+        expect(element.queryField).to.equal('myField');
+      });
+
+      test('default properties are set correctly', function() {
+        expect(element.showCheckbox).to.be.false;
+        expect(element.otherCount).to.not.exist;
+        expect(element.maxOtherCount).to.equal(0);
+        expect(element.loading).to.be.false;
+      });
+
+      test('_queryInput is set using item[idProperty] and queryField', function() {
+        expect(element._queryInput).to.deep.equal({
+          id: 'myId',
+          field: 'myField'
+        });
+      });
+
+      test('does have build-and-run-query element with correct values', function() {
+        expect(element.$$('build-and-run-query')).to.exist;
+        expect(element.$$('build-and-run-query').fields).to.equal('myField');
+        expect(element.$$('build-and-run-query').values).to.equal('myId');
+      });
+
+      test('_updateData with total does update otherCount and maxOtherCount', function() {
+        element._updateData(10);
+        expect(element.otherCount).to.equal(8);
+        expect(element.maxOtherCount).to.equal(8);
+      });
+
+      test('setting _total does update otherCount and maxOtherCount', function() {
+        element._total = 20;
+        expect(element.otherCount).to.equal(18);
+        expect(element.maxOtherCount).to.equal(18);
+      });
+
+      test('_createToggleListener does return object with onToggle function property', function() {
+        var listener = element._createToggleListener();
+        expect(listener).to.be.an('Object');
+        expect(listener.onToggle).to.be.a('Function');
+      });
+
+      test('_createToggleListener.onToggle does fire a selected event', function(done) {
+        element.selectedListener = function() {
+          done();
+        };
+        element.listen(element, 'selected', 'selectedListener');
+        element._createToggleListener().onToggle();
+      });
+
+      test('does show horizontal-bar for item', function() {
+        var bars = Polymer.dom(element.root).querySelectorAll('horizontal-bar');
+        expect(bars.length).to.equal(2);
+        expect(bars[0]).to.exist;
+        expect(bars[0].count).to.equal(2);
+        expect(bars[0].max).to.equal(5);
+        expect(bars[0].name).to.equal('My Item Text');
+        expect(bars[0].icon).to.equal('myIcon');
+        expect(bars[0].styleClass).to.equal('myStyleClass');
+        expect(bars[0].showCheckbox).to.be.false;
+        expect(bars[0].checkboxTooltip).to.equal('Toggle Filter on My Item Text');
+        expect(bars[0].linkValue).to.equal('myLink');
+      });
+
+      test('does show horizontal-bar for other counts', function(done) {
+        element.otherCount = 10;
+        element.maxOtherCount = 10;
+        element.loading = false;
+        element.styleClassOtherBar = 'myOtherBarStyleClass';
+        flush(function() {
+          var bars = Polymer.dom(element.root).querySelectorAll('horizontal-bar');
+          expect(bars.length).to.equal(2);
+          expect(bars[1]).to.exist;
+          expect(bars[1].count).to.equal(10);
+          expect(bars[1].max).to.equal(10);
+          expect(bars[1].name).to.equal('');
+          expect(bars[1].styleClass).to.equal('myOtherBarStyleClass');
+          done();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
