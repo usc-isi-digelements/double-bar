@@ -113,13 +113,13 @@ limitations under the License.
         expect(bars.length).to.equal(2);
         expect(bars[0]).to.exist;
         expect(bars[0].count).to.equal(2);
+        expect(bars[0].icon).to.equal('myIcon');
+        expect(bars[0].link).to.equal('myLink');
         expect(bars[0].max).to.equal(5);
         expect(bars[0].name).to.equal('My Item Text');
-        expect(bars[0].icon).to.equal('myIcon');
         expect(bars[0].styleClass).to.equal('myStyleClass');
         expect(bars[0].showCheckbox).to.be.false;
         expect(bars[0].checkboxTooltip).to.equal('Toggle Filter on My Item Text');
-        expect(bars[0].linkValue).to.equal('myLink');
       });
 
       test('does show horizontal-bar for other counts', function(done) {
