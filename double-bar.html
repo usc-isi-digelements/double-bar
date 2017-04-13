@@ -28,7 +28,7 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
   client="[[client]]"
   index-name="[[indexName]]"
   index-types="[[indexTypes]]"
-  item-id="abc123"
+  query-id="abc123"
   query-field="[[queryField]]"
   count="10"
   max="20"
@@ -93,8 +93,9 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
           name="[[text]]"
           style-class="[[styleClass]]"
           show-checkbox="[[showCheckbox]]"
-          checkbox-tooltip="Toggle Filter on [[text]]"
-          toggle-listener="[[_createToggleListener()]]"
+          checkbox-tooltip="[[checkboxTooltip]]"
+          toggle-listener="[[toggleListener]]"
+          toggle-property="[[toggleProperty]]"
           selected="{{selected}}">
         </horizontal-bar>
       </div>
@@ -158,11 +159,11 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
         /**
          * (Required)
          *
-         * The id of the item to show.
+         * The query id of the item to show.
          *
          * @type {String}
          */
-        itemId: {
+        queryId: {
           type: String
         },
 
@@ -257,7 +258,20 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
         /**
          * (Optional)
          *
-         * Whether to show a checkbox next to the horizontal bar.
+         * The hover tooltip of the checkbox.
+         *
+         * @type {String}
+         * @default ''
+         */
+        checkboxTooltip: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * Whether to show a checkbox to the left of the horizontal bar.
          *
          * @type {Boolean}
          * @default false
@@ -265,6 +279,37 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
         showCheckbox: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * An object with a function property called if the button is clicked or tapped.
+         * The name of the property in the object is defined in toggleProperty.
+         *
+         * @type {Object}
+         * @default {onToggle: function() {}}
+         */
+        toggleListener: {
+          type: Object,
+          value: function() {
+            return {
+              onToggle: function() {}
+            };
+          }
+        },
+
+        /**
+         * (Optional)
+         *
+         * The name of the function property in toggleListener.
+         *
+         * @type {String}
+         * @default 'onToggle'
+         */
+        toggleProperty: {
+          type: String,
+          value: 'onToggle'
         },
 
         /**
@@ -358,7 +403,7 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
       },
 
       observers: [
-        '_createQueryInput(itemId, queryField)'
+        '_createQueryInput(queryId, queryField)'
       ],
 
       /**
@@ -380,22 +425,6 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
           id: id,
           field: field
         });
-      },
-
-      /**
-       * Creates and returns the toggle listener for the horizontal-bar that fires a selected event.
-       *
-       * @return {Object}
-       * @private
-       */
-      _createToggleListener: function() {
-        var self = this;
-
-        return {
-          onToggle: function() {
-            self.fire('selected');
-          }
-        };
       },
 
       /**

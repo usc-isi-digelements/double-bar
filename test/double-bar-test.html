@@ -42,11 +42,11 @@ limitations under the License.
         element = fixture('double-bar-fixture');
         element.count = 2;
         element.icon = 'myIcon';
-        element.itemId = 'myId';
         element.link = 'myLink';
         element.max = 5;
         element.styleClass = 'myStyleClass';
         element.text = 'My Item Text';
+        element.queryId = 'myId';
         element.queryField = 'myField';
         flush(done);
       });
@@ -54,16 +54,20 @@ limitations under the License.
       test('input properties are set correctly', function() {
         expect(element.count).to.equal(2);
         expect(element.icon).to.equal('myIcon');
-        expect(element.itemId).to.equal('myId');
         expect(element.link).to.equal('myLink');
         expect(element.max).to.equal(5);
         expect(element.styleClass).to.equal('myStyleClass');
         expect(element.text).to.equal('My Item Text');
+        expect(element.queryId).to.equal('myId');
         expect(element.queryField).to.equal('myField');
       });
 
       test('default properties are set correctly', function() {
         expect(element.showCheckbox).to.be.false;
+        expect(element.checkboxTooltip).to.equal('');
+        expect(element.toggleListener).to.be.an('Object');
+        expect(element.toggleListener.onToggle).to.be.a('Function');
+        expect(element.toggleProperty).to.equal('onToggle');
         expect(element.otherCount).to.not.exist;
         expect(element.maxOtherCount).to.equal(0);
         expect(element.loading).to.be.false;
@@ -94,22 +98,8 @@ limitations under the License.
         expect(element.maxOtherCount).to.equal(18);
       });
 
-      test('_createToggleListener does return object with onToggle function property', function() {
-        var listener = element._createToggleListener();
-        expect(listener).to.be.an('Object');
-        expect(listener.onToggle).to.be.a('Function');
-      });
-
-      test('_createToggleListener.onToggle does fire a selected event', function(done) {
-        element.selectedListener = function() {
-          done();
-        };
-        element.listen(element, 'selected', 'selectedListener');
-        element._createToggleListener().onToggle();
-      });
-
       test('does show horizontal-bar for item', function() {
-        var bars = Polymer.dom(element.root).querySelectorAll('horizontal-bar');
+        var bars = document.querySelectorAll('horizontal-bar');
         expect(bars.length).to.equal(2);
         expect(bars[0]).to.exist;
         expect(bars[0].count).to.equal(2);
@@ -119,7 +109,10 @@ limitations under the License.
         expect(bars[0].name).to.equal('My Item Text');
         expect(bars[0].styleClass).to.equal('myStyleClass');
         expect(bars[0].showCheckbox).to.be.false;
-        expect(bars[0].checkboxTooltip).to.equal('Toggle Filter on My Item Text');
+        expect(bars[0].checkboxTooltip).to.equal('');
+        expect(bars[0].toggleListener).to.be.an('Object');
+        expect(bars[0].toggleListener.onToggle).to.be.a('Function');
+        expect(bars[0].toggleProperty).to.equal('onToggle');
       });
 
       test('does show horizontal-bar for other counts', function(done) {
@@ -128,7 +121,7 @@ limitations under the License.
         element.loading = false;
         element.styleClassOtherBar = 'myOtherBarStyleClass';
         flush(function() {
-          var bars = Polymer.dom(element.root).querySelectorAll('horizontal-bar');
+          var bars = document.querySelectorAll('horizontal-bar');
           expect(bars.length).to.equal(2);
           expect(bars[1]).to.exist;
           expect(bars[1].count).to.equal(10);
