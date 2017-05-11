@@ -72,6 +72,7 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
     <build-and-run-query
       fields="[[_queryInput.field]]"
       values="[[_queryInput.id]]"
+      query="[[query]]"
       client="[[client]]"
       index-name="[[indexName]]"
       index-types="[[indexTypes]]"
@@ -157,9 +158,20 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
         },
 
         /**
+         * (Optional)
+         *
+         * The elasticsearch query object.  Can be set instead of `queryId` and `queryField`.
+         *
+         * @type {Object}
+         */
+        query: {
+          type: Object
+        },
+
+        /**
          * (Required)
          *
-         * The query id of the item to show.
+         * The query id of the item to show.  Not required if `query` is set.
          *
          * @type {String}
          */
@@ -170,7 +182,7 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
         /**
          * (Required)
          *
-         * The query field.
+         * The query field.  Not required if `query` is set.
          *
          * @type {String}
          */
