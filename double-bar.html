@@ -93,6 +93,7 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
           max="[[max]]"
           name="[[text]]"
           style-class="[[styleClass]]"
+          target="[[target]]"
           show-checkbox="[[showCheckbox]]"
           checkbox-tooltip="[[checkboxTooltip]]"
           toggle-listener="[[toggleListener]]"
@@ -265,6 +266,19 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
          */
         text: {
           type: String
+        },
+
+        /**
+         * (Optional)
+         *
+         * The target page of the link.
+         *
+         * @type {String}
+         * @default '_self'
+         */
+        target: {
+          type: String,
+          value: '_self'
         },
 
         /**
