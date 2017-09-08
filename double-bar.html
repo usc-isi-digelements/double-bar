@@ -440,6 +440,10 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
        * @private
        */
       _createQueryInput: function(id, field) {
+        if(!id || !field){
+          return
+        }
+
         if(this._queryInput.id === id && this._queryInput.field === field) {
           return;
         }
