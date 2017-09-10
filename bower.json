@@ -1,11 +1,10 @@
 {
   "name": "double-bar",
   "description": "A Polymer Element showing two horizontal-bar elements:  one built using given properties and the other built using elasticsearch query results.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "authors": [
     "Next Century Corporation"
   ],
-  "license": "http://polymer.github.io/LICENSE.txt",
   "keywords": [
     "web-component",
     "polymer"
@@ -18,7 +17,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "build-and-run-query": "DigElements/build-and-run-query#^2.0.0",
+    "build-and-run-query": "DigElements/build-and-run-query#^2.1.1",
     "horizontal-bar": "DigElements/horizontal-bar#^2.0.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0.0"
   },
