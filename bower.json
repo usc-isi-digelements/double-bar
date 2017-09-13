@@ -1,7 +1,7 @@
 {
   "name": "double-bar",
   "description": "A Polymer Element showing two horizontal-bar elements:  one built using given properties and the other built using elasticsearch query results.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "authors": [
     "Next Century Corporation"
   ],

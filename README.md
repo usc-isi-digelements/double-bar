@@ -19,6 +19,23 @@ A Polymer Element showing two horizontal-bar elements.  The left horizontal-bar 
 </double-bar>
 ```
 
+### Styling
+
+`<double-bar>` provides the following custom properties and mixins for styling:
+
+Custom property                        | Description                                              | Default
+---------------------------------------|----------------------------------------------------------|--------
+`--double-bar-left-color`              | The color of the left bar.                               | --paper-grey-300
+`--double-bar-left-count-color`        | The color of the left count label.                       | --paper-grey-900
+`--double-bar-left-height`             | The height of the left bar.                              | 20px
+`--double-bar-left-title-color`        | The color of the left title label.                       | --paper-grey-900
+`--double-bar-left-title-hover-color`  | The color of the left title label on hover (if a link).  | --paper-grey-600
+`--double-bar-right-color`             | The color of the right bar.                              | --paper-grey-300
+`--double-bar-right-count-color`       | The color of the right count label.                      | --paper-grey-900
+`--double-bar-right-height`            | The height of the right bar.                             | 20px
+`--double-bar-right-title-color`       | The color of the right title label.                      | --paper-grey-900
+`--double-bar-right-title-hover-color` | The color of the right title label on hover (if a link). | --paper-grey-600
+
 ### Dependencies
 
 Dependencies are installed using [Bower](http://bower.io/):
