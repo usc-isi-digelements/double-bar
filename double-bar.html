@@ -125,6 +125,7 @@ Custom property                        | Description                            
           icon="[[icon]]"
           link="[[link]]"
           image="[[image]]"
+          image-style-class="[[imageStyleClass]]"
           max="[[max]]"
           name="[[text]]"
           style-class="[[styleClass]]"
@@ -312,6 +313,19 @@ Custom property                        | Description                            
          */
         text: {
           type: String
+        },
+
+        /**
+         * (Optional)
+         *
+         * The style class for the image.
+         *
+         * @type {String}
+         * @default ''
+         */
+        imageStyleClass: {
+          type: String,
+          value: ''
         },
 
         /**
