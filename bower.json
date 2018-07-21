@@ -10,15 +10,15 @@
     "polymer"
   ],
   "main": "double-bar.html",
-  "homepage": "https://github.com/DigElements/double-bar/",
+  "homepage": "https://github.com/usc-isi-digelements/double-bar/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "build-and-run-query": "DigElements/build-and-run-query#2.5.1",
-    "horizontal-bar": "DigElements/horizontal-bar#2.3.0",
+    "build-and-run-query": "usc-isi-digelements/build-and-run-query#2.5.1",
+    "horizontal-bar": "usc-isi-digelements/horizontal-bar#2.3.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-styles": "PolymerElements/paper-styles#^2.0.0"
   },
