@@ -1,24 +1,17 @@
 {
   "name": "double-bar",
-  "description": "A Polymer Element showing one horizontal-bar element built using given properties and another built using elasticsearch query results.",
-  "version": "2.6.2",
-  "authors": [
-    "Next Century Corporation"
-  ],
-  "keywords": [
-    "web-component",
-    "polymer"
-  ],
+  "description":
+    "A Polymer Element showing one horizontal-bar element built using given properties and another built using elasticsearch query results.",
+  "version": "2.6.3",
+  "authors": ["Next Century Corporation"],
+  "keywords": ["web-component", "polymer"],
   "main": "double-bar.html",
   "homepage": "https://github.com/usc-isi-digelements/double-bar/",
-  "ignore": [
-    "/.*",
-    "/test/"
-  ],
+  "ignore": ["/.*", "/test/"],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "build-and-run-query": "usc-isi-digelements/build-and-run-query#2.5.1",
-    "horizontal-bar": "usc-isi-digelements/horizontal-bar#2.3.0",
+    "build-and-run-query": "usc-isi-digelements/build-and-run-query#^2.5.1",
+    "horizontal-bar": "usc-isi-digelements/horizontal-bar#^2.3.1",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-styles": "PolymerElements/paper-styles#^2.0.0"
   },
